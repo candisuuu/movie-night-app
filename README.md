@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Movie Night App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A simple React app that was initially created to be used with a group of friends to search, select, and upvote movies that we'd want to watch for a movie night. Has since been used and updated as a means to learn more about React, Redux, and Redux Toolkit. Is also being used as a boilerplate for a similar app to search, select, and upvote videogames to play for a videogame club (think book club but replace books with videogames!).
 
-## Available Scripts
+## Installing/Getting started
 
-In the project directory, you can run:
+It's required to have [npm](https://www.npmjs.com/get-npm) installed locally,  have a cloned setup of the [Movie Night Cloudflare Worker](https://github.com/candisuuu/movie-night-api), and to have set up an account and application with [Auth0](https://manage.auth0.com/dashboard/) to follow the instructions.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once you have everything installed and an Auth0 account and application set up do the following:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open the `.env` file and enter the domain and client ID for your application set up with Auth0, and the base URL for the API you've set up via Cloudflare from the Movie Night Cloudflare Worker.
 
-### `npm test`
+```sh
+# Navigate to where the repo data is located in your machine
+$ cd [repo data location]
+# Deploy app to dev environment for local testing
+$ npm start
+# Once app is ready for production run a build for production
+$ npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Next Steps for Development
+* Confirmation/error message for movie form submission
+* Popup error message for all instances of errors when fetching data
+* Send email notification to app owner of errors along with error details
+* Ability for user with an admin role to go in and delete movies from Upvoted Movies page
+* Ability for all users to undo their own upvote action
+* Add user profile page - enable user to change password and see movies they've upvoted
