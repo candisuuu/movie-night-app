@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useFetchUserQuery, setUserData } from './store';
+import { setUserData, setAccessToken } from './store';
 import Header from './components/Header';
 import Route from './components/Route';
 import MovieSearch from './pages/MovieSearch';
 import UpvotedMovies from './pages/UpvotedMovies';
 
 function App() {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const dispatch = useDispatch();
-  const userId = useSelector(({ user }) => {
-    return user.userName;
-  });
-  const { data } = useFetchUserQuery({ userName: userId }, { skip: (isAuthenticated && userId.length > 0) ? false : true });
   const [showLoginOptions, setShowLoginOptions] = useState(false);
+  const getUserAccessToken = async () => {
+    try {
+      const accessToken = await getAccessTokenSilently();
+
+      dispatch(setAccessToken(accessToken));
+    } catch(err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     if (isAuthenticated) {
-      setShowLoginOptions(true);
-      dispatch(setUserData({ userName: user.nickname, userUpvotedMovies: null }));
+      getUserAccessToken();
 
-      if (data)
-        dispatch(setUserData({ userName: user.nickname, userUpvotedMovies: data.UpvotedMovies }));
+      setShowLoginOptions(true);
+      dispatch(setUserData({ userName: user.nickname, userUpvotedMovies: user[process.env.REACT_APP_AUTH0_USER_METADATA_NAMESPACE].UpvotedMovies }));
     }
     // eslint-disable-next-line
-  }, [isAuthenticated, data]);
+  }, [isAuthenticated]);
 
   return (
     <div className="w-full divide-y">

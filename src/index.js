@@ -13,7 +13,9 @@ root.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     authorizationParams={{
-      redirect_uri: window.location.origin
+      audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+      redirect_uri: window.location.origin,
+      scope: "read:current_user update:current_user_metadata"
     }}>
     <Provider store={store}>
       <App />
