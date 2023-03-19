@@ -33,16 +33,16 @@ function MovieSearchForm() {
 
     return(
         <div className="px-4">
-            <label className="font-medium" htmlFor="movieSearch">Movie Search</label>
+            <label className="font-medium dark:text-white" htmlFor="movieSearch">Movie Search</label>
             <div className="relative">
                 <input id="movieSearch"
-                    className="w-full rounded border-slate-300 form-input"
+                    className="w-full rounded border-slate-300 dark:border-slate-500 form-input dark:bg-slate-800 dark:text-white"
                     type="text"
                     value={searchTerm}
                     onChange={handleSetSearchTerm}
                     placeholder="Enter a movie title and press the enter key on your keyboard" />
                 <button className={`${searchTerm.length > 0 ? "" : "hidden "}absolute top-3.5 right-3`} type="button" aria-label="Reset search" onClick={handleResetSearchTerm}>
-                    <FaTimes />
+                    <FaTimes className="dark:fill-white" />
                 </button>
             </div>
         </div>

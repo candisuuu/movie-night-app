@@ -15,6 +15,7 @@ const upvotedMoviesApi = createApi({
     endpoints(builder) {
         return {
             fetchAllUpvotedMovies: builder.query({
+                providesTags: ['UpvotedMovies'],
                 query: (sort) => {
                     return {
                         url: '/movies',
@@ -27,6 +28,7 @@ const upvotedMoviesApi = createApi({
                 }
             }),
             upvoteMovie: builder.mutation({
+                invalidatesTags: ['UpvotedMovies'],
                 query: (movie) => {
                     return {
                         url: '/movies',
@@ -40,10 +42,19 @@ const upvotedMoviesApi = createApi({
                         }
                     };
                 }
+            }),
+            removeUpvotedMovie: builder.mutation({
+                invalidatesTags: ['UpvotedMovies'],
+                query: (movie) => {
+                    return {
+                        url: `/movies?id=${movie.imdbID}`,
+                        method: 'DELETE'
+                    };
+                }
             })
         };
     }
 });
 
-export const { useFetchAllUpvotedMoviesQuery, useUpvoteMovieMutation } = upvotedMoviesApi;
+export const { useFetchAllUpvotedMoviesQuery, useUpvoteMovieMutation, useRemoveUpvotedMovieMutation } = upvotedMoviesApi;
 export { upvotedMoviesApi };

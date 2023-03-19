@@ -6,6 +6,7 @@ const userSlice = createSlice({
         userId: "",
         userName: "",
         userUpvotedMovies: null,
+        userAppTheme: "Light Mode",
         accessToken: ""
     },
     reducers: {
@@ -13,6 +14,7 @@ const userSlice = createSlice({
           state.userId = action.payload.userId;
           state.userName = action.payload.userName;
           state.userUpvotedMovies = action.payload.userUpvotedMovies;
+          state.userAppTheme = (action.payload.userAppTheme === "dark" ? "Dark" : "Light") + " Mode";
       },
       setUserUpvotedMovie(state, action) {
         if (state.userUpvotedMovies.indexOf(action.payload) === -1)
@@ -25,11 +27,14 @@ const userSlice = createSlice({
           state.userUpvotedMovies.splice(movieIdIndex, 1);
         }
       },
+      setUserAppTheme(state, action) {
+        state.userAppTheme = action.payload;
+      },
       setAccessToken(state, action) {
         state.accessToken = action.payload;
       }
     }
 });
 
-export const { setUserData, setUserUpvotedMovie, setUserDownvotedMovie, setAccessToken } = userSlice.actions;
+export const { setUserData, setUserUpvotedMovie, setUserDownvotedMovie, setUserAppTheme, setAccessToken } = userSlice.actions;
 export const userReducer = userSlice.reducer;

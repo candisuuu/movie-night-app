@@ -4,11 +4,12 @@
 
 ## Updates
 
-### 3/14/2023
-* Get user authentication token for secure fetching to Cloudflare API
-* Get and set user upvoted movie data via Auth0 database
-* Ability for all users to undo their own upvote action
-* Submission loading indicator for modal form submission
+### 3/19/2023
+* User request: option to toggle between dark mode and light mode
+* Send delete method to upvoted movies data when the number of votes on an upvoted movie reaches 0
+* Add user profile page - enable user to change password and see movies they've upvoted
+* Changes to layout for better user experience
+* Fixed Tailwind config
 
 ## Installing/Getting started
 
@@ -30,10 +31,10 @@ $ npm run build
 ```
 
 ## Next Steps for Development
-* User request: option to toggle between dark mode and light mode
-* Send delete method to upvoted movies data when the number of votes on an upvoted movie reaches 0
-* Add user profile page - enable user to change password and see movies they've upvoted
 * User request: ability for user with an admin role to go in and delete movies from Upvoted Movies page
+* User request: "Encore" page for user to see movies that have been watched that they can upvote to watch again
+* User request: Add new status that will display on movie cards for movies that have been watched
+* Tidy up class names and children content being used in components
 * Confirmation/error message for movie form submission
 * Popup error message for all instances of errors when fetching data
 * Send email notification to app owner of errors along with error details

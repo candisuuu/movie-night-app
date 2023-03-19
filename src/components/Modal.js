@@ -49,7 +49,7 @@ function Modal() {
     };
 
     return (
-        <div className={`${modalData.modalVisibility ? "block" : "hidden"} fixed inset-0 bg-slate-700/90 ${(setUpvoteMovieResults.isLoading && setUserUpvotedMoviesResults.isLoading) ? 'pointer-events-none' : ''}`}>
+        <div className={`${modalData.modalVisibility ? "block" : "hidden"} fixed z-20 inset-0 bg-slate-700/90 ${(setUpvoteMovieResults.isLoading && setUserUpvotedMoviesResults.isLoading) ? 'pointer-events-none' : ''}`}>
             <div className="absolute inset-0 sm:inset-x-1/3 sm:inset-y-1/4 min-w-fit h-screen sm:h-fit p-2.5 bg-white sm:rounded sm:shadow-lg">
                 <button className="absolute right-3" onClick={handleCloseModal} aria-label="Close Modal">
                     <FaTimes />

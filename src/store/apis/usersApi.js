@@ -27,10 +27,23 @@ const usersApi = createApi({
                         }
                     };
                 }
+            }),
+            patchUserAppTheme: builder.mutation({
+                query: (theme) => {
+                    return {
+                        url: theme.userId,
+                        method: 'PATCH',
+                        body: {
+                            user_metadata: {
+                                themePreference: theme.preference
+                            }
+                        }
+                    };
+                }
             })
         };
     }
 });
 
-export const { usePatchUserUpvotedMoviesMutation } = usersApi;
+export const { usePatchUserUpvotedMoviesMutation, usePatchUserAppThemeMutation } = usersApi;
 export { usersApi };

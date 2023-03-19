@@ -30,11 +30,11 @@ function ListPagination({ totalPages }) {
         }
 
         return (
-            <div className="flex items-center justify-around mb-4 pt-4">
-                <button className={`${searchResultsPage === 1 ? 'invisible pointer-events-none ' : ''}flex items-center`} onClick={handlePrevPage}><FaChevronLeft className="inline-block mr-1" /> Prev</button>
+            <div className="flex items-center justify-around mb-4 pt-4 dark:text-white">
+                <button className={`${searchResultsPage === 1 ? 'invisible pointer-events-none ' : ''}flex items-center p-2 border border-black dark:border-slate-500 rounded dark:bg-slate-800`} onClick={handlePrevPage}><FaChevronLeft className="inline-block mr-1" /> Prev</button>
                 <div>
                     <span>Go to </span>
-                    <select className="rounded ml-1" onChange={handlePageNumber} value={searchResultsPage}>
+                    <select className="rounded ml-1 dark:bg-slate-800" onChange={handlePageNumber} value={searchResultsPage}>
                         {
                             pageNumbers.map((pageNumber) => {
                                 return <option key={pageNumber} value={pageNumber}>Page {pageNumber}</option>;
@@ -42,7 +42,7 @@ function ListPagination({ totalPages }) {
                         }
                     </select>
                 </div>
-                <button className={`${searchResultsPage === totalPages ? 'invisible pointer-events-none ' : ''}flex items-center`} onClick={handleNextPage}>Next <FaChevronRight className="inline-block ml-1" /></button>
+                <button className={`${searchResultsPage === totalPages ? 'invisible pointer-events-none ' : ''}flex items-center p-2 border border-black dark:border-slate-500 rounded dark:bg-slate-800`} onClick={handleNextPage}>Next <FaChevronRight className="inline-block ml-1" /></button>
             </div>
         );
     }

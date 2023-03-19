@@ -11,7 +11,7 @@ function UpvotedMovies({ isLoggedIn }) {
         };
     });
     
-    const { data, error, isFetching } = useFetchAllUpvotedMoviesQuery({ sortBy: sortBy, sortOrder: sortOrder }, { refetchOnMountOrArgChange: true });
+    const { data, error, isFetching } = useFetchAllUpvotedMoviesQuery({ sortBy: sortBy, sortOrder: sortOrder });
 
     const handleSetSorting = (e) => {
         const params = e.target.value.match(/([^|][A-Za-z]*)/gm);
@@ -23,12 +23,12 @@ function UpvotedMovies({ isLoggedIn }) {
         content;
 
     if (isFetching) {
-        header = <h3 className="py-4 text-center font-medium">Loading...</h3>
+        header = <h3 className="py-4 text-center font-medium dark:text-white">Loading...</h3>
     } else if (error)
-        header = <h3 className="py-4 text-center font-medium">Error retrieving movies.</h3>
+        header = <h3 className="py-4 text-center font-medium dark:text-white">Error retrieving movies.</h3>
     else {
         header = <div className="flex items-center justify-between">
-                        <select className="rounded" onChange={handleSetSorting} defaultValue={`${sortBy}||${sortOrder}`}>
+                        <select className="rounded dark:bg-slate-800 dark:text-white" onChange={handleSetSorting} defaultValue={`${sortBy}||${sortOrder}`}>
                             <option value="Title||ASC">Title A - Z</option>
                             <option value="Title||DESC">Title Z - A</option>
                             <option value="totalVotes||DESC">Highest Votes</option>
@@ -40,7 +40,7 @@ function UpvotedMovies({ isLoggedIn }) {
 
     return (
         <div className={isLoggedIn ? "" : "hidden"}>
-            <div className="container mx-auto mt-3 px-4 divide-y">
+            <div className="container mx-auto mt-20 sm:mt-16 p-4 divide-y">
                 {header}
                 {content}
             </div>
